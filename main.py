@@ -36,6 +36,11 @@ st.markdown("""
     }
     input, .stSelectbox [data-baseweb="select"] span { color: white !important; }
     
+    /* Placeholder Color Fix */
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+    
     [data-testid="stSidebar"] { background-color: #161625; border-right: 1px solid rgba(255,255,255,0.1); }
     
     .stButton > button {
@@ -309,7 +314,8 @@ if not st.session_state.get('current_path'):
     st.markdown('<p class="hero-title">File Organizer Pro</p>', unsafe_allow_html=True)
     st.markdown('<p style="color:#a6a6c3; font-size:1.2rem;">Tidy up your digital chaos in seconds.</p>', unsafe_allow_html=True)
     st.write("") 
-    st.text_input("📂 Paste your folder path here:", key='path_input', on_change=set_start_path)
+    # --- MODIFIED LINE BELOW: ADDED PLACEHOLDER ---
+    st.text_input("📂 Paste your folder path here:", key='path_input', on_change=set_start_path, placeholder="E.g., C:/Users/Name/Downloads")
     st.write("") 
     c1, c2, c3 = st.columns(3)
     with c1: st.info("**⚡ Instant Sort**\n\nCategorize files into Images, Docs, and Videos.")
